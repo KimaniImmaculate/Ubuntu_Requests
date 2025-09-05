@@ -56,7 +56,7 @@ def fetch_image(url, downloaded_hashes):
         #Handles network-related errors 
         print(f"Connection error for {url}: {e}")
     except Exception as e:
-        #Catched any other unexpected errors
+        #Catches any other unexpected errors
         print(f"An error occured for {url}: {e}")
     return None
 
