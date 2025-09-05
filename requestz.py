@@ -1,5 +1,6 @@
 import requests  # A simple HTTP library for Python
 import os  # Provides a way of using operating system dependent functionality
+import time  # Used for adding delays (if needed)
 import hashlib  # Provides a way to create hash objects (Used for duplicate detection)
 from urllib.parse import urlparse  # Extracts filenames from URLs
 
@@ -8,7 +9,9 @@ def fetch_image(url, downloaded_hashes):
     try:
         #Send a GET request to the URL with a 15-second timeout
         #stream=True means the content is fetched in chunks, useful for large files
-        response = requests.get(url, timeout=10, stream=True)
+        headers = {"User-Agent": "Mozilla/5.0"}
+        response = requests.get(url, headers=headers, timeout=5, stream=True)
+
         response.raise_for_status() #Raise an error if HTTP status is not 200 (Okay)
         
         #Check the Content-Type header to ensure we are downloading an image
@@ -23,7 +26,11 @@ def fetch_image(url, downloaded_hashes):
         
         #If no filename exists in the URL, give it a default name
         if not filename:
-            filename = "downloaded_image.jpg"
+         filename = f"unsplash_{int(time.time())}.jpg"
+         
+        # Ensure filename has an extension (default .jpg)
+        if not os.path.splitext(filename)[1]:
+         filename += ".jpg"
         
         #Build the full path where the file will be saved inside "Fetched_Images"
         filepath = os.path.join("Fetched_Images", filename)
