@@ -34,7 +34,9 @@ Welcome to the Ubuntu Image Fetcher
 A tool for mindfully collecting images from the web
 
 Please enter image URLs (comma-separated): https://images.unsplash.com/photo-1500534314209-a25ddb2bd429
+
 ✓ Successfully fetched: photo-1500534314209-a25ddb2bd429.jpg
+
 ✓ Image saved to Fetched_Images/photo-1500534314209-a25ddb2bd429.jpg
 
 Connection strengthened. Community enriched.
